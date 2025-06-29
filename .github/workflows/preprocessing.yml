@@ -1,0 +1,35 @@
+name: Automate Preprocessing
+
+on:
+  push:
+    paths:
+      - 'preprocessing/automate_AkbarRizqi.py'
+      - 'dataset_raw/**'
+      - '.github/workflows/preprocessing.yml'
+
+jobs:
+  run-preprocessing:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repo
+      uses: actions/checkout@v3
+
+    - name: Setup Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+
+    - name: Install Dependencies
+      run: |
+        pip install -r requirements.txt
+
+    - name: Run Preprocessing Script
+      run: |
+        python preprocessing/automate_AkbarRizqi.py
+
+    - name: Upload Preprocessed Data (train.csv & test.csv)
+      uses: actions/upload-artifact@v4
+      with:
+        name: processed-dataset
+        path: preprocessing/dataset_preprocessing/
