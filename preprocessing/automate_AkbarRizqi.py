@@ -12,10 +12,10 @@ def load_data(path='dataset_raw/WA_Fn-UseC_-Telco-Customer-Churn.csv'):
 def preprocess_data(df):
     print("[INFO] Preprocessing dataset...")
 
-    # Drop customerID
+    # Drop kolom ID yang tidak diperlukan
     df.drop(columns=['customerID'], inplace=True)
 
-    # Konversi TotalCharges ke float
+    # Konversi TotalCharges ke numerik dan tangani missing value
     df['TotalCharges'] = pd.to_numeric(df['TotalCharges'], errors='coerce')
     df['TotalCharges'].fillna(df['TotalCharges'].median(), inplace=True)
 
@@ -36,22 +36,26 @@ def preprocess_data(df):
 def split_and_save(df, output_dir='preprocessing/dataset_preprocessing'):
     print("[INFO] Splitting dataset...")
 
+    # Pisahkan fitur dan target
     X = df.drop(columns=['Churn'])
     y = df['Churn']
 
+    # Split data
     X_train, X_test, y_train, y_test = train_test_split(
         X, y, test_size=0.2, stratify=y, random_state=42
     )
 
-    # Gabungkan kembali untuk simpan
+    # Gabungkan kembali: target tetap pakai nama 'Churn' agar cocok dengan modelling.py
     train_df = X_train.copy()
-    train_df['target'] = y_train
+    train_df['Churn'] = y_train
 
     test_df = X_test.copy()
-    test_df['target'] = y_test
+    test_df['Churn'] = y_test
 
+    # Buat folder jika belum ada
     os.makedirs(output_dir, exist_ok=True)
 
+    # Simpan data
     train_df.to_csv(os.path.join(output_dir, 'train.csv'), index=False)
     test_df.to_csv(os.path.join(output_dir, 'test.csv'), index=False)
 
