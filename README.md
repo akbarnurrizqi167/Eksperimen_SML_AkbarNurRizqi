@@ -4,7 +4,7 @@ Repositori ini merupakan bagian dari submission proyek akhir kelas **Membangun S
 
 ---
 
-## 📊 1. Perkenalan Dataset
+## 📊 Perkenalan Dataset
 
 Dataset yang digunakan dalam proyek ini adalah **Telco Customer Churn** yang diperoleh dari platform Kaggle. Dataset ini berisi informasi mengenai pelanggan dari sebuah perusahaan telekomunikasi fiktif, dengan tujuan utama untuk memprediksi **kemungkinan pelanggan berhenti berlangganan (churn)** berdasarkan berbagai fitur seperti layanan yang digunakan, durasi langganan, dan biaya bulanan.
 
@@ -35,23 +35,7 @@ Dataset digunakan secara konsisten mulai dari:
 
 ---
 
-## 📁 2. Struktur Folder
-Eksperimen_SML_AkbarNurRizqi/
-├── .github/
-│   └── workflows/
-│       └── preprocess.yml              <- Workflow otomatisasi preprocessing (Advanced)
-├── namadataset_raw/
-│   └── WA_Fn-UseC_-Telco-Customer-Churn.csv
-├── preprocessing/
-│   ├── Eksperimen_AkbarNurRizqi.ipynb  <- Eksperimen manual menggunakan template MSML
-│   ├── automate_AkbarNurRizqi.py       <- Script preprocessing otomatis (Skilled)
-│   └── dataset_preprocessing/
-│       ├── train.csv                   <- Hasil preprocessing (ready to train)
-│       └── test.csv
-
-
-
-## ✅ 3. Checklist Kriteria & Penilaian
+## ✅ Checklist Kriteria & Penilaian
 
 ### 🧪 Kriteria 1: Eksperimen terhadap Dataset Pelatihan — **✅ Advanced**
 
